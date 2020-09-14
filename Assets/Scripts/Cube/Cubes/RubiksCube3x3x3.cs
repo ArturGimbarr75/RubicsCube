@@ -8,11 +8,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Cube
 {
-    class RubiksCube3x3
+    class RubiksCube3x3x3
     {
-        private GameObject Cube;
+        public GameObject Cube { get; private set; }
         public GameObject[,,] CurrentCubeCombination { get; private set; }
-        
+
 
         private Vector3 SelectedAxisOfRotation;
         private Vector3Int[] RotationVector;
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Cube
         public RotationRing SelectedRing { get; private set; }
         public GameObject SelectedPartsToRotate { get; private set; }
 
-        public RubiksCube3x3(GameObject cube)
+        public RubiksCube3x3x3(GameObject cube)
         {
             Cube = cube;
             CorrectRotateCubeParts();
@@ -138,10 +138,8 @@ namespace Assets.Scripts.Cube
                 RotationAngle *= -1;
         }
 
-        public void Rotate()
+        public (Quaternion from, Quaternion to) RotateInArray()
         {
-            SelectedPartsToRotate.transform.RotateAround(new Vector3(), SelectedAxisOfRotation, RotationAngle);
-            
             for (int i = 1; i < 4; i++)
             {
                 if (SelectedRing > 0)
@@ -155,6 +153,9 @@ namespace Assets.Scripts.Cube
                     CurrentCubeCombination.Swap(RotationVector[4], RotationVector[8 - i]);
                 }
             }
+
+            var to = Quaternion.Euler(SelectedAxisOfRotation * RotationAngle); 
+            return (SelectedPartsToRotate.transform.rotation, SelectedPartsToRotate.transform.rotation * to);
         }
 
         public enum RotationRing
