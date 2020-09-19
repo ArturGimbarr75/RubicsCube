@@ -22,13 +22,13 @@ public class CubeSceneManager : MonoBehaviour
 
     void Update()
     {
-        /*if (RubiksCube.IsAnimationEnded)
+        if (RubiksCube.IsAnimationEnded)
         {
             System.Random rand = new System.Random();
             var arr = Enum.GetValues(typeof(RubiksCube3x3x3.RotationRing)).Cast<RubiksCube3x3x3.RotationRing>();
             RubiksCube.Select(arr.ElementAt(rand.Next(0, arr.Count())));
             RubiksCube.Rotate();
-        }*/
+        }
 
         RubiksCube.AnimateCube();
     }
