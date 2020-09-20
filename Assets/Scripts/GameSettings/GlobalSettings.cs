@@ -19,12 +19,17 @@ namespace Assets.Scripts.GameSettings
         public static GlobalSettings GetInstance() => Instance ?? (Instance = ReadSettingsFromJson());
 
         public CameraSettings CameraSettings;
+        public CubeSettings CubeSettings;
         public static GlobalSettings DefaultSettings { get; } = new GlobalSettings()
         {
             CameraSettings = new CameraSettings()
             {
                 VerticalRotationSpeed = 18.0f,
                 HorizontalRotationSpeed = 360.0f
+            },
+            CubeSettings = new CubeSettings()
+            {
+                RotateTimeInSeconds = 3.0f
             }
         };
     }

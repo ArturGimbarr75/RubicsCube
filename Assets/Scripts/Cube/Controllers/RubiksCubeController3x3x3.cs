@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.GameSettings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,20 @@ namespace Assets.Scripts.Cube.Controllers
 {
     class RubiksCubeController3x3x3
     {
-        public float RotateTimeInSeconds { get; set; }
         public bool IsAnimationEnded { get; private set; }
 
         private RubiksCube3x3x3 RubiksCube;
         private Quaternion Begin;
         private Quaternion Target;
         private float LerpQuantity;
+        private GlobalSettings Settings;
 
         public RubiksCubeController3x3x3(GameObject cube)
         {
             RubiksCube = new RubiksCube3x3x3(cube);
             LerpQuantity = 0.0f;
             IsAnimationEnded = true;
-            // Just for test
-            RotateTimeInSeconds = 1.0f;
+            Settings = GlobalSettings.GetInstance();
         }
 
         public void Select(RotationRing ring)
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Cube.Controllers
         {
             if (!IsAnimationEnded)
             {
-                LerpQuantity = LerpQuantity + (Time.deltaTime / RotateTimeInSeconds);
+                LerpQuantity = LerpQuantity + (Time.deltaTime / Settings.CubeSettings.RotateTimeInSeconds);
                 if (LerpQuantity > 1.0)
                 {
                     CompleteCurrentAnimation();
