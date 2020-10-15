@@ -29,7 +29,7 @@ namespace Assets.Scripts.GameSettings
             },
             CubeSettings = new CubeSettings()
             {
-                RotateTimeInSeconds = 3.0f
+                RotateTimeInSeconds = 0.5f
             }
         };
     }

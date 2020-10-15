@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Cube;
 using Assets.Scripts.Cube.Controllers;
+using Assets.Scripts.Cube.Inputs;
 using Assets.Scripts.Extensions;
 using System;
 using System.Collections;
@@ -24,10 +25,18 @@ public class CubeSceneManager : MonoBehaviour
     {
         if (RubiksCube.IsAnimationEnded)
         {
-            System.Random rand = new System.Random();
+            /*System.Random rand = new System.Random();
             var arr = Enum.GetValues(typeof(RubiksCube3x3x3.RotationRing)).Cast<RubiksCube3x3x3.RotationRing>();
             RubiksCube.Select(arr.ElementAt(rand.Next(0, arr.Count())));
-            RubiksCube.Rotate();
+            RubiksCube.Rotate();*/
+            var rot = RubiksCube3x3x3Input.GetNextRotation();
+            if (rot != RubiksCube3x3x3.RotationRing.Skip)
+            {
+                RubiksCube.Select(rot);
+                RubiksCube.Rotate();
+            }
+            else
+                return;
         }
 
         RubiksCube.AnimateCube();

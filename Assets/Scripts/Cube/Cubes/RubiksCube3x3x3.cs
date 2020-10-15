@@ -160,6 +160,8 @@ namespace Assets.Scripts.Cube
 
         public enum RotationRing
         {
+            Skip = 0,
+
             L = 1,
             M = 2,
             R = -3,

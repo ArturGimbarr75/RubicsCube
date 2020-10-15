@@ -32,7 +32,7 @@ namespace Assets.Scripts.Cube.Controllers
             if (!IsAnimationEnded)
                 CompleteCurrentAnimation();
             RubiksCube.Select(ring);
-            ModifySelectedParts();
+            //ModifySelectedParts();
         }
 
         public void Rotate()
