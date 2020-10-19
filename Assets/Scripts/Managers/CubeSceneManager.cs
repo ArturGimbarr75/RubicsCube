@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 
@@ -25,10 +26,6 @@ public class CubeSceneManager : MonoBehaviour
     {
         if (RubiksCube.IsAnimationEnded)
         {
-            /*System.Random rand = new System.Random();
-            var arr = Enum.GetValues(typeof(RubiksCube3x3x3.RotationRing)).Cast<RubiksCube3x3x3.RotationRing>();
-            RubiksCube.Select(arr.ElementAt(rand.Next(0, arr.Count())));
-            RubiksCube.Rotate();*/
             var rot = RubiksCube3x3x3Input.GetNextRotation();
             if (rot != RubiksCube3x3x3.RotationRing.Skip)
             {
@@ -81,5 +78,46 @@ public class CubeSceneManager : MonoBehaviour
     public void Rotate()
     {
         RubiksCube.Rotate();
+    }
+    public void F_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.F_);
+    }
+    public void S_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.S_);
+    }
+    public void B_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.B_);
+    }
+    public void L_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.L_);
+    }
+    public void M_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.M_);
+    }
+    public void R_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.R_);
+    }
+    public void U_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.U_);
+    }
+    public void E_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.E_);
+    }
+    public void D_()
+    {
+        RubiksCube.Select(RubiksCube3x3x3.RotationRing.D_);
+    }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene(0);
     }
 }
