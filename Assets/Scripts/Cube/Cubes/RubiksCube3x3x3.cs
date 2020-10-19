@@ -134,6 +134,8 @@ namespace Assets.Scripts.Cube
                     break;
             }
 
+            SelectedPartsToRotate.transform.parent = Cube.transform;
+
             if (ring.ToString().Contains("_"))
                 RotationAngle *= -1;
         }
