@@ -27,10 +27,14 @@ public class MainMenuCubeManager : MonoBehaviour
         {
             System.Random rand = new System.Random();
             var arr = Enum.GetValues(typeof(RubiksCube3x3x3.RotationRing)).Cast<RubiksCube3x3x3.RotationRing>();
-            var ring = arr.ElementAt(rand.Next(0, arr.Count()));
+            RubiksCube3x3x3.RotationRing ring;
+            do
+            {
+                ring = arr.ElementAt(rand.Next(0, arr.Count()));
+            }
+            while (ring == RubiksCube3x3x3.RotationRing.Skip);
             RubiksCube.Select(ring);
             RubiksCube.Rotate();
-            Debug.Log(ring);
         }
 
         RubiksCube.AnimateCube();
